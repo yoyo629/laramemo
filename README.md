@@ -33,3 +33,19 @@
 	・配列の組み換え
 	・複雑な条件分岐
 	これらをモデルで行い、結果だけをコントローラーに返す！
+
+・マイグレーションファイルとモデルの作成
+    memosテーブル
+        php artisan make:model Memo -m               
+        // テーブル名の頭文字を大文字、「-m」のオプションをつけることでModelも自動作成する。
+    
+    memo_tagsテーブル　※（アンダーバーで区切られている場合）
+        php artisan make:model MemoTag -m
+        // _で区切らず先頭の単語と二つ目の単語の頭文字を大文字にする。
+
+    上記を実行すると
+        \source\laramemo\database\migrations直下にマイグレーションファイル
+        \source\laramemo\app\Models直下にモデルファイル
+    が作成される。
+    
+
