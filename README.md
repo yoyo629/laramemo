@@ -47,5 +47,14 @@
         \source\laramemo\database\migrations直下にマイグレーションファイル
         \source\laramemo\app\Models直下にモデルファイル
     が作成される。
-    
+
+
+・npmインストール関連のエラー
+    下記コマンドを実行
+        1. npm audit fix
+        2. npm audit fix --force
+        3. npm install
+        4. npm run dev
+        =>/js/app.js と css/app.cssが作成される。
+
 
