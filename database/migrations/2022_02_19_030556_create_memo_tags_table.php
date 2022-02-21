@@ -8,19 +8,22 @@ class CreateMemoTagsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * memoとtagをつなぐ中間テーブル
      * @return void
      */
     public function up()
     {
         Schema::create('memo_tags', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('memo_id');
+            $table->unsignedBigInteger('tag_id');
+
+            $table->foreign('memo_id')->references('id')->on('memos');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * ロールバック時に戻る型を定義（テーブル削除）
      *
      * @return void
      */

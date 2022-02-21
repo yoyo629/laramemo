@@ -47,5 +47,26 @@
         \source\laramemo\database\migrations直下にマイグレーションファイル
         \source\laramemo\app\Models直下にモデルファイル
     が作成される。
-    
 
+
+・npmインストール関連のエラー
+    下記コマンドを実行
+        1. npm audit fix
+        2. npm audit fix --force
+        3. npm install
+        4. npm run dev
+        =>/js/app.js と css/app.cssが作成される。
+
+
+・viewについて
+    レイアウト化に使う命令
+        ・@extends('レイアウトファイル名')
+        　=>レイアウトファイルの指定
+
+        ・@yield('埋め込む名前') 
+        　=>子viewファイルから埋め込みたい部分を差し込む
+
+        ・@section('埋め込みたい場所の名前')
+          =>@yieldの埋め込みたい名前と埋め込みたい場所の名前を一致させることで
+          親ファイルに子viewの中身を埋め込むことができる。
+        
