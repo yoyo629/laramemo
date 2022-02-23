@@ -24,7 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('create');
+        // ここでメモ一覧を取得(select文)
+        // user_idがログインユーザーのidと一致する条件 
+        $memos = Memo::select('memos.*')
+            ->where('user_id', '=', \Auth::id())
+            ->whereNull('deleted_at')
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+            // dd($memos);
+
+        // compactでview側に変数を渡す
+        return view('create', compact('memos'));
     }
 
     // POSTの場合は引数にRequestをインスタンス化することで、HTTPリクエストかかわる様々なメソッドを使用できる
