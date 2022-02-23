@@ -3,7 +3,10 @@
 /public/storage
 /storage/*.key
 /vendor
+
+# 設定ファイルのためgit管理外とする
 .env
+
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
