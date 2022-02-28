@@ -54,4 +54,27 @@ class HomeController extends Controller
         // リダイレクト処理
         return redirect( route('home'));
     }
+
+    /**
+     * メモ編集
+     *
+     * @return void
+     */
+    public function edit($id)
+    {
+        // ここでメモ一覧を取得(select文)
+        // user_idがログインユーザーのidと一致する条件 
+        $memos = Memo::select('memos.*')
+            ->where('user_id', '=', \Auth::id())
+            ->whereNull('deleted_at')
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+            // dd($memos);
+
+        // 引数で渡された$idでテーブルからデータを取得する
+        $edit_memo = Memo::find($id);
+
+        // compactでview側に変数を渡す
+        return view('create', compact('memos','edit_memo'));
+    }
 }
